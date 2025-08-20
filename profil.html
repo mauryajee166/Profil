@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Maurya - Shankar Classes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #3b82f6;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --class-color: #10b981;
+            --subject-color: #f59e0b;
+            --batch-color: #8b5cf6;
+            --address-color: #ef4444;
+            --instagram: #E1306C;
+            --facebook: #4267B2;
+            --whatsapp: #25D366;
+            --neon-color: #00f3ff;
+            --neon-color-2: #ff00ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .profile-card {
+            background: #1e293b;
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 420px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+            padding: 4px; /* Space for the neon border */
+        }
+        
+        /* Enhanced Neon Border Effect with More Blur */
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(45deg, 
+                var(--neon-color), 
+                var(--neon-color-2),
+                var(--neon-color));
+            border-radius: 1.8rem;
+            z-index: -1;
+            animation: neonBorder 3s linear infinite;
+            background-size: 200% 200%;
+            filter: blur(15px); /* Increased blur for softer effect */
+            opacity: 0.7;
+        }
+        
+        @keyframes neonBorder {
+            0% {
+                background-position: 0% 50%;
+                opacity: 0.6;
+            }
+            50% {
+                background-position: 100% 50%;
+                opacity: 0.8;
+            }
+            100% {
+                background-position: 0% 50%;
+                opacity: 0.6;
+            }
+        }
+        
+        .profile-card-inner {
+            background: #1e293b;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .institute-header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 1.8rem 1rem; /* Reduced padding to fit in one line */
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .institute-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .institute-name {
+            font-size: 2rem; /* Slightly smaller to fit in one line */
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            color: #fff;
+            text-shadow: 
+                0 0 5px var(--neon-color),
+                0 0 10px var(--neon-color),
+                0 0 20px var(--neon-color),
+                0 0 40px var(--neon-color);
+            animation: neonFlicker 2s infinite alternate;
+            position: relative;
+            white-space: nowrap; /* Ensure text stays in one line */
+        }
+        
+        @keyframes neonFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 5px var(--neon-color),
+                    0 0 10px var(--neon-color),
+                    0 0 20px var(--neon-color),
+                    0 0 40px var(--neon-color);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        
+        .profile-section {
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: -20px; /* Adjusted for smaller header */
+        }
+        
+        .profile-image-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 3;
+            overflow: hidden;
+            border: 5px solid #1e293b;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            /* Zoom effect applied */
+            transform: scale(1.15);
+            transform-origin: center center;
+        }
+        
+        .profile-image-container:hover .profile-image {
+            transform: scale(1.25);
+        }
+        
+        .student-details {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Subtle border for details section */
+        .student-details::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(45deg, 
+                rgba(37, 99, 235, 0.1), 
+                rgba(59, 130, 246, 0.05), 
+                rgba(37, 99, 235, 0.1));
+            border-radius: 1.1rem;
+            z-index: -1;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: #cbd5e1;
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .detail-value {
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        
+        .name-value {
+            color: #60a5fa;
+            font-weight: 800;
+        }
+        
+        .roll-value {
+            color: #93c5fd;
+            font-weight: 800;
+        }
+        
+        .class-value {
+            color: #34d399;
+            font-weight: 800;
+        }
+        
+        .subject-value {
+            color: #fbbf24;
+            font-weight: 800;
+        }
+        
+        .batch-value {
+            color: #a78bfa;
+            font-weight: 800;
+        }
+        
+        .address-value {
+            color: #f87171;
+            font-weight: 800;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover::after {
+            border-color: rgba(255, 255, 255, 0.8);
+            width: 120%;
+            height: 120%;
+        }
+        
+        .instagram {
+            background: var(--instagram);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.5);
+        }
+        
+        .facebook {
+            background: var(--facebook);
+            box-shadow: 0 0 15px rgba(66, 103, 178, 0.5);
+        }
+        
+        .whatsapp {
+            background: var(--whatsapp);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.85rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 7px 14px rgba(37, 99, 235, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="profile-card-inner">
+            <!-- Prominent SHANKAR CLASSES Header with Neon Effect -->
+            <div class="institute-header">
+                <h1 class="institute-name">SHANKAR CLASSES</h1>
+            </div>
+            
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <img src="https://i.postimg.cc/FzwdhyVX/Screenshot-2025-08-20-15-22-56-510.jpg" 
+                         alt="Vivek Maurya" 
+                         class="profile-image">
+                </div>
+                
+                <!-- Student Details -->
+                <div class="student-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Name:</span>
+                        <span class="detail-value name-value">Vivek Maurya</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Roll No:</span>
+                        <span class="detail-value roll-value">134</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Class:</span>
+                        <span class="detail-value class-value">12th (Sections 24-26)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Subjects:</span>
+                        <span class="detail-value subject-value">PCMB</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Batch Time:</span>
+                        <span class="detail-value batch-value">7:30 AM - 10:15 AM</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Address:</span>
+                        <span class="detail-value address-value">Ap Colony</span>
+                    </div>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.instagram.com/vivek_maurya_jee/?fbclid=IwY2xjawMNQcdleHRuA2FlbQIxMAABHsCem_dDVVUYx0HwhP2tcpLyh3lq-QAC7qa0OVl98xxNStWT2O9N7ToDLRL6_aem_uWBIV7OWU_uxCh0eYKeMdg" 
+                       class="social-link instagram"
+                       target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/round2hell10m" 
+                       class="social-link facebook"
+                       target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/919241741543" 
+                       class="social-link whatsapp"
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="https://mauryajee166.github.io/Mg-Esport-webpage-/" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visit My App
+                    </a>
+                    <a href="https://mauryajee166.github.io/Mg-Esport-webpage-/" class="btn btn-outline" target="_blank">
+                        <i class="fas fa-download"></i> Download My App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
